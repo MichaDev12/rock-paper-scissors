@@ -10,12 +10,12 @@ function getComputerChoice() {
     case 1:
     case 4:
     case 7:
-      choice = "Rock";
+      choice = "rock";
       break;
     case 2:
     case 5:
     case 8:
-      choice = "Paper";
+      choice = "paper";
       break;
     case 3:
     case 6:
@@ -26,3 +26,42 @@ function getComputerChoice() {
 
   return choice;
 }
+
+function playRound(playerSelection, computerSelection) {
+  let finalResult;
+  playerSelection = playerSelection.toLowerCase();
+
+  while (playerSelection === computerSelection) {
+    console.log(`${playerSelection} vs ${computerSelection}. It's a tie.`);
+    computerSelection = getComputerChoice();
+    playerSelection = prompt("again");
+  }
+
+  if (playerSelection == "rock") {
+    if (computerSelection == "scissors") {
+      finalResult = `${playerSelection} vs ${computerSelection}. You win!`;
+    } else {
+      finalResult = `${playerSelection} vs ${computerSelection}. You lose.`;
+    }
+  }
+
+  if (playerSelection == "paper") {
+    if (computerSelection == "rock") {
+      finalResult = `${playerSelection} vs ${computerSelection}. You win!`;
+    } else {
+      finalResult = `${playerSelection} vs ${computerSelection}. You lose.`;
+    }
+  }
+
+  if (playerSelection == "scissors") {
+    if (computerSelection == "paper") {
+      finalResult = `${playerSelection} vs ${computerSelection}. You win!`;
+    } else {
+      finalResult = `${playerSelection} vs ${computerSelection}. You lose.`;
+    }
+  }
+
+  return finalResult;
+}
+
+playRound(prompt("Rock,Paper or Scissors?"), getComputerChoice());
