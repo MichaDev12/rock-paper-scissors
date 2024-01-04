@@ -64,4 +64,7 @@ function playRound(playerSelection, computerSelection) {
   return finalResult;
 }
 
-playRound(prompt("Rock,Paper or Scissors?"), getComputerChoice());
+const playerSelection = prompt("Rock,Paper or Scissors?");
+const computerSelection = getComputerChoice();
+
+playRound(playerSelection, getComputerChoice);
