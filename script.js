@@ -64,13 +64,30 @@ function game() {
   function playRound(playerSelection, computerSelection) {
     let finalResult;
     let playerLowerCase = playerSelection.toLowerCase();
+    let realChoice;
 
-    while (playerLowerCase === computerSelection) {
-      console.log(`${playerLowerCase} vs ${computerSelection}. It's a tie.`);
-      computerSelection = getComputerChoice();
-      playerSelection = prompt("TIE. Let's play again! Rock, Paper or Scissors?");
-      playerLowerCase = playerSelection.toLowerCase();
-    }
+    do {
+      realChoice = false;
+      // if a tie
+      while (playerLowerCase === computerSelection) {
+        console.log(`${playerLowerCase} vs ${computerSelection}. It's a tie.`);
+        computerSelection = getComputerChoice();
+        playerSelection = prompt("TIE. Let's play again! Rock, Paper or Scissors?");
+        playerLowerCase = playerSelection.toLowerCase();
+      } 
+      // for a wrong choice
+      if (playerLowerCase == "rock" || playerLowerCase == "paper" || playerLowerCase == "scissors") {
+          realChoice = true;
+        }
+      while (!realChoice) {
+        playerSelection = prompt("Error. Rock, Paper or Scissors?");
+        playerLowerCase = playerSelection.toLowerCase();
+        if (playerLowerCase == "rock" || playerLowerCase == "paper" || playerLowerCase == "scissors") {
+          realChoice = true;
+        }
+      }
+    } while (!realChoice || playerLowerCase == computerSelection);
+    
 
     if (playerLowerCase == "rock") {
       if (computerSelection == "scissors") {
