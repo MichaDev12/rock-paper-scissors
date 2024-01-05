@@ -64,17 +64,13 @@ function game() {
       } else {
         finalResult = `${playerLowerCase} vs ${computerSelection}. You lose.`;
       }
-    }
-
-    if (playerLowerCase == "paper") {
+    } else if (playerLowerCase == "paper") {
       if (computerSelection == "rock") {
         finalResult = `${playerLowerCase} vs ${computerSelection}. You win!`;
       } else {
         finalResult = `${playerLowerCase} vs ${computerSelection}. You lose.`;
       }
-    }
-
-    if (playerLowerCase == "scissors") {
+    } else {
       if (computerSelection == "paper") {
         finalResult = `${playerLowerCase} vs ${computerSelection}. You win!`;
       } else {
