@@ -28,24 +28,38 @@ function getComputerChoice() {
 }
 
 function game() {
-  const playerSelection = prompt("Rock,Paper or Scissors?");
-  const computerSelection = getComputerChoice();
-  let resultRound = playRound(playerSelection, computerSelection);
-
-  console.log(resultRound);
-
   let computerScore = 0;
   let playerScore = 0;
+  let playingGame = true;
+  let winner;
 
-  let score = resultRound.includes("win");
-
-  if (score) {
-    ++playerScore;
-  } else {
-    ++computerScore;
+  // computer and player are playing the game until someone wins, after that playingGame = false
+  while (playingGame) {
+    // play a round
+    const playerSelection = prompt("Rock,Paper or Scissors?");
+    const computerSelection = getComputerChoice();
+    let resultRound = playRound(playerSelection, computerSelection);
+    // show in console who wins the round
+    console.log(resultRound);
+    // true if contains win and false if isnt contain it
+    let score = resultRound.includes("win");
+    if (score) {
+      ++playerScore;
+    } else {
+      ++computerScore;
+    }
+    // show in console current score
+    console.log(`Player: ${playerScore} - Computer: ${computerScore}`);
+    // conditional to finish the game
+    if (computerScore == 5 || playerScore == 5) {
+      playingGame = false;
+    }
   }
 
-  console.log(`Player: ${playerScore} - Computer: ${computerScore}`);
+  return (winner =
+    playerScore > computerScore
+      ? console.log("Player wins!")
+      : console.log("Computer wins!"));
 
   function playRound(playerSelection, computerSelection) {
     let finalResult;
