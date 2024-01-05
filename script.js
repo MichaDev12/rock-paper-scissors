@@ -36,7 +36,7 @@ function game() {
   // computer and player are playing the game until someone wins, after that playingGame = false
   while (playingGame) {
     // play a round
-    const playerSelection = prompt("Rock,Paper or Scissors?");
+    const playerSelection = prompt("Let's play! Rock, Paper or Scissors?");
     const computerSelection = getComputerChoice();
     let resultRound = playRound(playerSelection, computerSelection);
     // show in console who wins the round
@@ -68,7 +68,7 @@ function game() {
     while (playerLowerCase === computerSelection) {
       console.log(`${playerLowerCase} vs ${computerSelection}. It's a tie.`);
       computerSelection = getComputerChoice();
-      playerSelection = prompt("again");
+      playerSelection = prompt("TIE. Let's play again! Rock, Paper or Scissors?");
       playerLowerCase = playerSelection.toLowerCase();
     }
 
@@ -95,3 +95,5 @@ function game() {
     return finalResult;
   }
 }
+
+game();
