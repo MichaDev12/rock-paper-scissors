@@ -27,44 +27,61 @@ function getComputerChoice() {
   return choice;
 }
 
-function playRound(playerSelection, computerSelection) {
-  let finalResult;
-  playerSelection = playerSelection.toLowerCase();
+function game() {
+  const playerSelection = prompt("Rock,Paper or Scissors?");
+  const computerSelection = getComputerChoice();
+  let resultRound = playRound(playerSelection, computerSelection);
 
-  while (playerSelection === computerSelection) {
-    console.log(`${playerSelection} vs ${computerSelection}. It's a tie.`);
-    computerSelection = getComputerChoice();
-    playerSelection = prompt("again");
+  console.log(resultRound);
+
+  let computerScore = 0;
+  let playerScore = 0;
+
+  let score = resultRound.includes("win");
+
+  if (score) {
+    ++playerScore;
+  } else {
+    ++computerScore;
   }
 
-  if (playerSelection == "rock") {
-    if (computerSelection == "scissors") {
-      finalResult = `${playerSelection} vs ${computerSelection}. You win!`;
-    } else {
-      finalResult = `${playerSelection} vs ${computerSelection}. You lose.`;
+  console.log(`Player: ${playerScore} - Computer: ${computerScore}`);
+
+  function playRound(playerSelection, computerSelection) {
+    let finalResult;
+    let playerLowerCase = playerSelection.toLowerCase();
+
+    while (playerLowerCase === computerSelection) {
+      console.log(`${playerLowerCase} vs ${computerSelection}. It's a tie.`);
+      computerSelection = getComputerChoice();
+      playerSelection = prompt("again");
+      playerLowerCase = playerSelection.toLowerCase();
     }
-  }
 
-  if (playerSelection == "paper") {
-    if (computerSelection == "rock") {
-      finalResult = `${playerSelection} vs ${computerSelection}. You win!`;
-    } else {
-      finalResult = `${playerSelection} vs ${computerSelection}. You lose.`;
+    if (playerLowerCase == "rock") {
+      if (computerSelection == "scissors") {
+        finalResult = `${playerLowerCase} vs ${computerSelection}. You win!`;
+      } else {
+        finalResult = `${playerLowerCase} vs ${computerSelection}. You lose.`;
+      }
     }
-  }
 
-  if (playerSelection == "scissors") {
-    if (computerSelection == "paper") {
-      finalResult = `${playerSelection} vs ${computerSelection}. You win!`;
-    } else {
-      finalResult = `${playerSelection} vs ${computerSelection}. You lose.`;
+    if (playerLowerCase == "paper") {
+      if (computerSelection == "rock") {
+        finalResult = `${playerLowerCase} vs ${computerSelection}. You win!`;
+      } else {
+        finalResult = `${playerLowerCase} vs ${computerSelection}. You lose.`;
+      }
     }
-  }
 
-  return finalResult;
+    if (playerLowerCase == "scissors") {
+      if (computerSelection == "paper") {
+        finalResult = `${playerLowerCase} vs ${computerSelection}. You win!`;
+      } else {
+        finalResult = `${playerLowerCase} vs ${computerSelection}. You lose.`;
+      }
+    }
+
+    return finalResult;
+  }
 }
-
-const playerSelection = prompt("Rock,Paper or Scissors?");
-const computerSelection = getComputerChoice();
-
-playRound(playerSelection, getComputerChoice);
