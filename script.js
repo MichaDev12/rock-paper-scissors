@@ -33,11 +33,13 @@ let playerSelection;
 buttons.forEach((button) => {
   button.addEventListener("click", () =>{
     playerSelection = button.id;
-    console.log(playerSelection);
-    playRound();
+    playRound(playerSelection);
   });
 });
 
 function playRound(playerSelection, computerSelection) {
-  return console.log("I will put the code here, this is a test");
+  computerSelection = getComputerChoice();
+  console.log(playerSelection);
+  console.log(computerSelection);
+  return console.log("Round Completed");
 }
