@@ -27,3 +27,17 @@ function getComputerChoice() {
   return choice;
 }
 
+const buttons = document.querySelectorAll("button");
+let playerSelection;
+
+buttons.forEach((button) => {
+  button.addEventListener("click", () =>{
+    playerSelection = button.id;
+    console.log(playerSelection);
+    playRound();
+  });
+});
+
+function playRound(playerSelection, computerSelection) {
+  return console.log("I will put the code here, this is a test");
+}
