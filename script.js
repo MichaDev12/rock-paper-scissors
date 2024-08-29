@@ -48,37 +48,42 @@ function playRound(playerSelection, computerSelection) {
   let finalResult;
 
   computerSelection = getComputerChoice();
-  console.log(playerSelection);
-  console.log(computerSelection);
 
   if (computerSelection === playerSelection) {
     result.textContent = `${playerSelection} vs ${computerSelection}. It's a tie`;
+    result.style.color = "gray";
   } else {
     switch (playerSelection) {
       case "rock":
         if (computerSelection == "scissors") {
           result.textContent = `${playerSelection} vs ${computerSelection}. You win`;
+          result.style.color = "green";
           playerScore++;
         } else {
           result.textContent = `${playerSelection} vs ${computerSelection}. You lose`;
+          result.style.color = "red";
           computerScore++;
         }
         break;
       case "paper":
         if (computerSelection == "rock") {
           result.textContent = `${playerSelection} vs ${computerSelection}. You win`;
+          result.style.color = "green";
           playerScore++;
         } else {
           result.textContent = `${playerSelection} vs ${computerSelection}. You lose`;
+          result.style.color = "red";
           computerScore++;
         }
         break;
       case "scissors":
         if (computerSelection == "paper") {
           result.textContent = `${playerSelection} vs ${computerSelection}. You win`;
+          result.style.color = "green";
           playerScore++;
         } else {
           result.textContent = `${playerSelection} vs ${computerSelection}. You lose`;
+          result.style.color = "red";
           computerScore++;
         }
         break;
@@ -91,10 +96,10 @@ function playRound(playerSelection, computerSelection) {
   if (playerScore == 5 || computerScore == 5) {
     if (playerScore > computerScore) {
       winner.textContent = "Player wins!";
+      winner.style.color = "green";
     } else {
       winner.textContent = "Computer wins!";
+      winner.style.color = "red";
     }
   }
-
-  return console.log("Round Completed");
 }
