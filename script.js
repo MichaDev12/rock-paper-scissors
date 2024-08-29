@@ -31,13 +31,16 @@ const buttons = document.querySelectorAll("button");
 const currentPlayerScore = document.querySelector("#playerScore");
 const currentComputerScore = document.querySelector("#computerScore");
 const result = document.querySelector("#result");
+const winner = document.querySelector("#winner");
 let playerScore = 0;
 let computerScore = 0;
 
 buttons.forEach((button) => {
   button.addEventListener("click", () =>{
     let playerSelection = button.id;
-    playRound(playerSelection);
+    if (playerScore != 5 && computerScore != 5) {
+      playRound(playerSelection);
+    }
   });
 });
 
@@ -81,7 +84,17 @@ function playRound(playerSelection, computerSelection) {
         break;
     }
   }
+
   currentPlayerScore.textContent = playerScore;
   currentComputerScore.textContent = computerScore;
+
+  if (playerScore == 5 || computerScore == 5) {
+    if (playerScore > computerScore) {
+      winner.textContent = "Player wins!";
+    } else {
+      winner.textContent = "Computer wins!";
+    }
+  }
+
   return console.log("Round Completed");
 }
