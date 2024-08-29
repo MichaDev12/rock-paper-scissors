@@ -46,5 +46,32 @@ function playRound(playerSelection, computerSelection) {
   console.log(playerSelection);
   console.log(computerSelection);
 
+  if (computerSelection === playerSelection) {
+    result.textContent = `${playerSelection} vs ${computerSelection}. It's a tie`;
+  } else {
+    switch (playerSelection) {
+      case "rock":
+        if (computerSelection == "scissors") {
+          result.textContent = `${playerSelection} vs ${computerSelection}. You win`;
+        } else {
+          result.textContent = `${playerSelection} vs ${computerSelection}. You lose`;
+        }
+        break;
+      case "paper":
+        if (computerSelection == "rock") {
+          result.textContent = `${playerSelection} vs ${computerSelection}. You win`;
+        } else {
+          result.textContent = `${playerSelection} vs ${computerSelection}. You lose`;
+        }
+        break;
+      case "scissors":
+        if (computerSelection == "paper") {
+          result.textContent = `${playerSelection} vs ${computerSelection}. You win`;
+        } else {
+          result.textContent = `${playerSelection} vs ${computerSelection}. You lose`;
+        }
+        break;
+    }
+  };
   return console.log("Round Completed");
 }
