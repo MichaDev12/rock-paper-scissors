@@ -28,18 +28,23 @@ function getComputerChoice() {
 }
 
 const buttons = document.querySelectorAll("button");
-let playerSelection;
+const playerScore = document.querySelector("#playerScore");
+const computerScore = document.querySelector("#computerScore");
+const result = document.querySelector("#result");
 
 buttons.forEach((button) => {
   button.addEventListener("click", () =>{
-    playerSelection = button.id;
+    let playerSelection = button.id;
     playRound(playerSelection);
   });
 });
 
 function playRound(playerSelection, computerSelection) {
+  let finalResult;
+
   computerSelection = getComputerChoice();
   console.log(playerSelection);
   console.log(computerSelection);
+
   return console.log("Round Completed");
 }
