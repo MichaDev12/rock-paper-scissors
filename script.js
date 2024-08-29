@@ -28,9 +28,11 @@ function getComputerChoice() {
 }
 
 const buttons = document.querySelectorAll("button");
-const playerScore = document.querySelector("#playerScore");
-const computerScore = document.querySelector("#computerScore");
+const currentPlayerScore = document.querySelector("#playerScore");
+const currentComputerScore = document.querySelector("#computerScore");
 const result = document.querySelector("#result");
+let playerScore = 0;
+let computerScore = 0;
 
 buttons.forEach((button) => {
   button.addEventListener("click", () =>{
@@ -53,25 +55,33 @@ function playRound(playerSelection, computerSelection) {
       case "rock":
         if (computerSelection == "scissors") {
           result.textContent = `${playerSelection} vs ${computerSelection}. You win`;
+          playerScore++;
         } else {
           result.textContent = `${playerSelection} vs ${computerSelection}. You lose`;
+          computerScore++;
         }
         break;
       case "paper":
         if (computerSelection == "rock") {
           result.textContent = `${playerSelection} vs ${computerSelection}. You win`;
+          playerScore++;
         } else {
           result.textContent = `${playerSelection} vs ${computerSelection}. You lose`;
+          computerScore++;
         }
         break;
       case "scissors":
         if (computerSelection == "paper") {
           result.textContent = `${playerSelection} vs ${computerSelection}. You win`;
+          playerScore++;
         } else {
           result.textContent = `${playerSelection} vs ${computerSelection}. You lose`;
+          computerScore++;
         }
         break;
     }
-  };
+  }
+  currentPlayerScore.textContent = playerScore;
+  currentComputerScore.textContent = computerScore;
   return console.log("Round Completed");
 }
